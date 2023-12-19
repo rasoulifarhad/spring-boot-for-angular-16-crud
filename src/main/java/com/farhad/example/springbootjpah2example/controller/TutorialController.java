@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import com.farhad.example.springbootjpah2example.repository.TutorialRepository;
 
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -28,7 +26,6 @@ public class TutorialController {
 
 	private final TutorialRepository tutorialRepository;
 
-	@CrossOrigin
 	@GetMapping("/tutorials")
 	public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
 		try {
@@ -49,7 +46,6 @@ public class TutorialController {
 		}
 	}
 
-	@CrossOrigin
 	@GetMapping("/tutorials/{id}")
 	public ResponseEntity<Tutorial> getTutorialByIdEntity(@PathVariable("id") long id) {
 		return tutorialRepository.findById(id)
@@ -57,7 +53,6 @@ public class TutorialController {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 
-	@CrossOrigin
 	@PostMapping("/tutorials")
 	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
 		try {
@@ -69,7 +64,6 @@ public class TutorialController {
 		}
 	}
 
-	@CrossOrigin
 	@DeleteMapping("/tutorials/{id}")
 	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
 		try {
@@ -80,7 +74,6 @@ public class TutorialController {
 		}
 	}
 
-	@CrossOrigin
 	@DeleteMapping("/tutorials")
 	public ResponseEntity<HttpStatus> deleteAllTutorials() {
 		try {
@@ -92,7 +85,6 @@ public class TutorialController {
 
 	}
 
-	@CrossOrigin
 	@GetMapping("/tutorials/published")
 	public ResponseEntity<List<Tutorial>> findByPublished() {
 		try {
